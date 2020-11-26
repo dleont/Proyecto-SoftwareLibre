@@ -1,0 +1,11 @@
+# Importacion De Librerias
+# Esta libreria nos permite acceder al microfono de nuestro dispositivo para la deteccion o captura del audio
+import speech_recognition as sr
+
+# Librerias en las que me permite transformar los datos a texto.
+from bs4 import BeautifulSoup
+import requests
+import random
+from collections import defaultdict
+import re, string
+
