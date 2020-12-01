@@ -9,3 +9,29 @@ import random
 from collections import defaultdict
 import re, string
 
+#Lo primero que se hizo para realizar el reconocimiento de forma adecuada fue instalarnos el paquete pip install pyAudio que en nuestro caso 
+#al no ser compatible con nustra versión buscamos otras alternativas hasta completar de forma exitosa y a su vez comprobar con el comando:
+python -m speech_recognition
+
+#Muestra de que esta funcionando de forma correcta el pyAudio Para el segundo paso lo que realizamos fue el importar y instalación de paquete 
+#pip install SpeechRecognition que a su vez junto con pyAudio lo que hace es obtener información del microfono y convertirlo en palabras 
+#centradas a lo que escucha y trasforma el mismo
+r = sr.Recognizer()
+
+#Dentro del tercer paso tenemos el imprimir un texto en donde me advierta que esta listo para recibir el audio y guardar directo de la fuente 
+#que es el micrófono forman las palabras que ingrese para asi transformar en una línea de texto siempre y cuando el texto sea comprensible.
+with sr.Microphone() as source:
+    print('Te Escucho Dime: ')
+    audio = r.listen(source)
+    
+#Paso numero cuatro en este paso lo que realizamos es el convertir y reconocer el audio que está guardado y recibió anteriormente 
+#convertirlo en una línea de texto con un formato directo asi como también mostrando un mensaje en lo que relata lo que se digo y convirtió
+try:
+        text = r.recognize_google(audio)
+        print('Tu Dices: {}' .format(text))
+        
+#Como ultimo texto tenemos una excepción que en mi caso se da cuando el usuario al hablar al micrófono este no reconoce el audio poco 
+#entendible y por lo mismo no puede convertir y transformar al texto mostrando a su vez un mensaje que aclara que no se escucha y no 
+#convertirá esta audio en un texto
+except :
+        print('No Te Escucho')
